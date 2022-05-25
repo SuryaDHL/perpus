@@ -54,16 +54,29 @@
                                 <h3 class="mb-5 fs-2 fw-bold">Smkn 2 Banjarmasin</h3>
                                 <form action="" method="">
                                 </div>
+                                  @if(session()->has('success'))
+                                    <div class="alert alert-success" role="alert">
+                                        {{ session('success') }}
+                                    </div>
+                                    @endif
                                     
+                                    @if(session()->has('LoginError'))
+                                    <div class="alert alert-danger" role="alert">
+                                        {{ session('LoginError') }}
+                                    </div>
+                                    @endif
                                     <div class="mb-3 form-floating">
+                                    <form class="login" method="post" action="/login/submit">
+                                     @csrf
+
                                         <input type="text" class="form-control bg-input" id="floatingInput"
-                                            placeholder="Username" name="username">
+                                            placeholder="Username" name="username" required>
                                         <label for="floatingInput">Username</label>
                                     </div>
                                     <div class="mb-3 form-floating">
 
                                         <input type="password" class="form-control bg-input" id="floatingPassword"
-                                            placeholder="Password" name="password">
+                                            placeholder="Password" name="password" required>
                                             <label for="floatingInput">Password</label>
                                     <div class="mb-3 form-check">
                                         <input class="form-check-input" type="checkbox" value="" id="remember"
@@ -74,10 +87,9 @@
                                     </div>
 
                                     <div class="mb-4 d-grid">
-                                        <a href="/dashboard"
-                                        button class="mb-2 btn btn-lg btn-primary btn-login text-uppercase fw-bold"
-                                            type="submit">Login
-                                        </a>
+                                        <button class="mb-2 btn btn-lg btn-primary btn-login text-uppercase fw-bold"
+                                            type="submit">Login</button>
+                                                
                                         <a href="/daftar"
                                             class="text-center mt-3 text-decoration-none">Account Register</a>
                                     </div>

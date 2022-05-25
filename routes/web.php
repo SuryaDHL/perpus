@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\LoginController;
+use App\Http\Controllers\AuthController;
 
 
 /*
@@ -18,9 +18,10 @@ use App\Http\Controllers\LoginController;
 Route::get('/', function () {
     return view('login');
 });
-Route::get('/login', [LoginController::class, 'login'])->name('login');
+Route::get('/login', [AuthController::class, 'login'])->name('login');
+Route::get('login/submit', [AuthController::class,'loginsubmit'])->name('loginsubmit');
 
-Route::get('/daftar', [LoginController::class, 'daftar'])->name('daftar');
-Route::post('/daftarpost', [LoginController::class,'daftarpost'])->name('daftarpost');
+Route::get('/daftar', [AuthController::class, 'daftar'])->name('registration');
+Route::post('/daftarpost', [AuthController::class,'daftarpost'])->name('daftarpost');
 
-Route::get('/dashboard', [LoginController::class, 'ayam'])->name('dashboard');
+Route::get('/dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
